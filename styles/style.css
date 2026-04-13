@@ -40,6 +40,7 @@
 
 body {
   background-color: var(--mainBackColor);
+  min-height: 150vh;
 }
 
 /*=== Header ===*/
@@ -415,7 +416,9 @@ nav {
   position: relative;
 }
 
-.cart-btn {
+.cart-btn,
+.builds_cart-btn,
+.guide_cart-btn {
   display: flex;
   justify-content: space-evenly;
   min-width: 115px;
@@ -429,7 +432,8 @@ nav {
   transform: scale(0.9);
 }
 
-.cart-btn:hover {
+.cart-btn:hover,
+.builds_cart-btn:hover {
   transform: scale(0.95);
   background-color: #bd4083;
 }
@@ -803,7 +807,8 @@ main {
 }
 
 .hero-divider,
-.hero-divider-2 {
+.hero-divider-2,
+.pre-builds_divider {
   width: 80px;
   height: 2px;
   background: #00d4e8;
@@ -955,7 +960,7 @@ button:active {
 
 .filter-body {
   display: flex;
-  gap: 10px;  
+  gap: 10px;
   flex-direction: column;
 }
 
@@ -971,5 +976,134 @@ button:active {
 }
 
 /*-- END FILTER SECTION  --*/
+
+/*-- Quick Start SECTION  --*/
+
+.quick-start {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 400px;
+  justify-content: space-between;
+  padding: 0% 3%;
+}
+
+/* -- Pre Builds  */
+
+.pre-builds {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  min-height: 100%;
+}
+
+.pre-builds_head,
+.home-guide_head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 30px;
+  gap: 20px;
+}
+
+.pre-builds_head h4 {
+  font-size: 25px;
+}
+
+.pre-builds_divider {
+  width: 30px;
+  position: absolute;
+  right: 20px;
+}
+
+.pre-builds_body,
+.home-guide_body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pre-builds_card,
+.home-guide_card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 220px;
+  min-width: 180px;
+  background-color: var(--secBackColor);
+  border-radius: 10px;
+  transform: scale(0.9);
+  transition: var(--tran);
+}
+
+.pre-builds_card:hover,
+.pre-builds_card img:hover {
+  transform: scale(0.95);
+}
+
+.pre-builds_card img,
+.home-guide_card img {
+  transition: var(--tran);
+
+  align-self: center;
+  height: 120px;
+}
+
+.builds_card-info-name,
+.guide-title {
+  font-size: 16px;
+}
+.builds_card-info-price {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.pre-builds_body svg:first-child,
+.pre-builds_body svg:last-child {
+  position: absolute;
+  fill: var(--secBackColor);
+  z-index: 999;
+}
+.pre-builds_body svg:first-child {
+  left: 0%;
+}
+
+.pre-builds_body svg:last-child {
+  right: 0%;
+}
+
+.pre-builds_body svg:first-child:active,
+.pre-builds_body svg:last-child:active {
+  color: var(--txt);
+  fill: var(--border);
+}
+
+/* -- End Pre Builds  */
+
+/*-- home-guide */
+
+.home-guide_head span {
+  position: absolute;
+  right: 0;
+  font-size: 12px;
+  color: var(--border);
+}
+
+.guide_card-info{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 5px;
+}
+
+.guide_cart-btn{
+  background-color: var(--border);
+}
+/*--End  home-guide */
+
+/*-- END Quick Start SECTION  --*/
 
 /*===  END MAIN ===*/
