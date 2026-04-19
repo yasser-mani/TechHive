@@ -2,79 +2,88 @@
 
 /******* SEARCH BAR *******/
 
-//== notification ==//
-
-document.addEventListener("click", (e) => {
+document.addEventListener("DOMContentLoaded", function () {
   const notifBtn = document.getElementById("notif");
   const blocNotif = document.getElementById("bloc-notif");
 
-  if (notifBtn.contains(e.target)) {
-    blocNotif.classList.toggle("active");
-    return; // Exit to prevent closing immediately
-  }
-
-  if (!blocNotif.contains(e.target)) {
-    blocNotif.classList.remove("active");
-  }
-});
-
-//== End notification ==//
-
-//== theme mode ==//
-
-const switchEl = document.getElementById("switch");
-const label = document.getElementById("label");
-
-switchEl.addEventListener("click", function () {
-  switchEl.classList.toggle("active");
-
-  // ==> add it later
-  // document.body.classList.toggle("dark");
-
-  label.textContent = switchEl.classList.contains("active")
-    ? "Dark mode"
-    : "Light mode";
-});
-
-//== end theme mode ==//
-
-//== account ==//
-
-document.addEventListener("click", (e) => {
   const accBtn = document.querySelector(".acc-sec");
   const blocAcc = document.getElementById("acc-bloc");
 
-  if (accBtn.contains(e.target)) {
-    blocAcc.classList.toggle("active");
-    return;
-  }
+  const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+  const headerActions = document.getElementById("headerActions");
 
-  if (!blocAcc.contains(e.target)) {
-    blocAcc.classList.remove("active");
-  }
-});
-
-//== end account ==//
-
-/******* END SEARCH BAR *******/
-
-/******* NAV BAR *******/
-
-document.addEventListener("click", (e) => {
   const cartBtn = document.querySelector(".cart-btn");
   const blocCart = document.querySelector(".cart-bloc");
 
-  if (cartBtn.contains(e.target)) {
-    blocCart.classList.toggle("active");
-    return;
+  // =============================
+  // NOTIFICATION
+  // =============================
+  if (notifBtn && blocNotif) {
+    notifBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+
+      blocNotif.classList.toggle("active");
+      blocAcc && blocAcc.classList.remove("active");
+      blocCart && blocCart.classList.remove("active");
+    });
   }
 
-  if (!blocCart.contains(e.target)) {
-    blocCart.classList.remove("active");
+  // =============================
+  // ACCOUNT
+  // =============================
+  if (accBtn && blocAcc) {
+    accBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+
+      blocAcc.classList.toggle("active");
+      blocNotif && blocNotif.classList.remove("active");
+      blocCart && blocCart.classList.remove("active");
+    });
   }
+
+  // =============================
+  // CART
+  // =============================
+  if (cartBtn && blocCart) {
+    cartBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+
+      blocCart.classList.toggle("active");
+      blocNotif && blocNotif.classList.remove("active"); // short-circuit evaluation methode
+      blocAcc && blocAcc.classList.remove("active");
+    });
+  }
+
+  // =============================
+  // MOBILE MENU
+  // =============================
+  if (mobileMenuToggle && headerActions) {
+    mobileMenuToggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      headerActions.classList.toggle("active");
+    });
+  }
+
+  // =============================
+  // GLOBAL CLICK (CLOSE ALL)
+  // =============================
+  document.addEventListener("click", function () {
+    blocNotif && blocNotif.classList.remove("active");
+    blocAcc && blocAcc.classList.remove("active");
+    blocCart && blocCart.classList.remove("active");
+  });
+
+  // =============================
+  // CLOSE MOBILE MENU ON RESIZE
+  // =============================
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 1200 && headerActions) {
+      headerActions.classList.remove("active");
+    }
+  });
 });
 
-/******* END NAV BAR *******/
+/******* END SEARCH BAR *******/
 
 /// End Header script ///
 
@@ -96,27 +105,26 @@ const dots = document.querySelectorAll(".dot");
 let carouselTimer; /* auto-slide interval                        */
 let resumeTimeout; /* waits 3s after last click then restarts    */
 
-/* ── Move to a slide ── */
+/* - Move to a slide - */
 function goTo(index) {
   current = ((index % total) + total) % total;
   track.style.transform = `translateX(-${current * 100}%)`;
   dots.forEach((d, i) => d.classList.toggle("active", i === current));
 }
 
-/* ── Start auto-sliding every 4s ── */
+/* - Start auto-sliding every 4s - */
 function startCarousel() {
   clearInterval(carouselTimer);
   carouselTimer = setInterval(() => goTo(current + 1), 4000);
 }
 
-/* ── Pause on click, resume 3s after last interaction ── */
+/* - Pause on click - */
 function onUserInteraction() {
   clearInterval(carouselTimer);
   clearTimeout(resumeTimeout);
   resumeTimeout = setTimeout(() => startCarousel(), 3000);
 }
 
-/* one listener on parent catches ALL clicks inside every slide */
 document
   .querySelector(".carousel")
   .addEventListener("click", onUserInteraction);
@@ -184,7 +192,7 @@ let games = [
   },
 ];
 
-/* ── Bar color based on score ── */
+/* - Bar color based on score - */
 function getBarColor(value) {
   if (value >= 80) return "#39ff50";
   if (value >= 55) return "#ffb800";
@@ -207,7 +215,13 @@ let shadowColors = {
   no: "0px 0 28px -2px #ff4444",
 };
 
-/* ── Main ── */
+let hoverColors = {
+  yes: "rgba(57, 255, 122, 0.2)",
+  med: "rgba(255, 184, 0, 0.2)",
+  no: "rgba(255, 68, 68, 0.2)",
+};
+
+/* - Main - */
 function mainTest(index) {
   let g = games[index];
 
@@ -223,10 +237,23 @@ function mainTest(index) {
   titleSpans.forEach(function (span) {
     span.style.color = accent;
   });
+
   dividers.forEach(function (div) {
     div.style.background = accent;
   });
+
   greenBtn.style.boxShadow = shadowColors[g.verdict];
+  greenBtn.style.borderColor = accentColors[g.verdict];
+  greenBtn.style.classList = accentColors[g.verdict];
+  greenBtn.backgroundColor = shadowColors[g.verdict];
+
+  greenBtn.addEventListener("mouseenter", () => {
+    greenBtn.style.background = hoverColors[g.verdict];
+  });
+
+  greenBtn.addEventListener("mouseleave", () => {
+    greenBtn.style.background = "none";
+  });
 
   badge.textContent = badgeLabels[g.verdict];
   badge.className = "verdict-badge " + g.verdict;
@@ -254,7 +281,7 @@ function mainTest(index) {
   });
 }
 
-/* ── game chips dynamically ── */
+/* - game chips dynamically - */
 let gameRow = document.getElementById("gameRow");
 let activeIdx = 0;
 let autoTimer;
@@ -273,7 +300,7 @@ games.forEach(function (game, index) {
   gameRow.appendChild(chip);
 });
 
-/* ── Game auto-cycle  ── */
+/* - Game auto-cycle  - */
 function resetAutoPlay() {
   clearInterval(autoTimer);
   autoTimer = setInterval(function () {
@@ -289,6 +316,49 @@ resetAutoPlay();
 
 //== end carousel ==//
 
+//******* FILTER SECTION *******//
+const filterItems = document.querySelectorAll(".filter-item");
+const heroFilter = document.querySelector(".hero-filter");
+
+filterItems.forEach((filterOption) => {
+  filterOption.addEventListener("click", (e) => {
+    const isActive = e.currentTarget.classList.contains("active");
+
+    filterItems.forEach((option) => {
+      option.classList.remove("active");
+    });
+
+    if (!isActive) {
+      e.currentTarget.classList.add("active");
+    }
+  });
+});
+
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".hero-filter")) {
+    filterItems.forEach((option) => {
+      option.classList.remove("active");
+    });
+  }
+});
+
+//***** END FILTER SECTION ****//
+
 //***** END HERO SECTION ****//
+
+//***** TREND BUILD SECTION ****//
+
+const buildReaction = document.querySelectorAll(".build_reaction svg");
+
+buildReaction.forEach((reac, index) => {
+  reac.addEventListener("click", (re) => {
+    if (!index === 1 || !index === 4 || !index === 7) {
+      return;
+    } else {
+      re.target.classList.toggle("clicked");
+    }
+  });
+});
+//***** END TREND BUILD SECTION ****//
 
 /// END Main ///
