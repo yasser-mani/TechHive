@@ -759,7 +759,7 @@ main {
   margin-bottom: 10px;
 }
 .carousel-slide {
-  background-image: url("../pictures/hero_back2.png");
+  background: url("../images/home_page/hero_back.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

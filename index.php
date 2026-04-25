@@ -1,22 +1,24 @@
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="assets/css/home_page.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=notifications"
     />
     <title>TecHive - PC Builder</title>
   </head>
+
   <body>
     <header>
       <div class="search-sec">
         <!-- logo -->
         <div id="logo">
           <i>
-            <img src="pictures/logo.png" alt="TecHive Logo" />
+            <img src="assets/images/home_page/logo.png" alt="TecHive Logo" />
           </i>
           <h3>TecHive</h3>
         </div>
@@ -178,7 +180,7 @@
       </nav>
       <!--/ nav bar -->
     </header>
-    <!--/Header -->
+    <!--/ Header -->
 
     <main>
       <section class="hero-sec">
@@ -598,7 +600,7 @@
               <path d="m14 16-4-4 4-4" />
             </svg>
             <div class="pre-builds_card">
-              <img src="pictures/computer.png" alt="computer" />
+              <img src="assets/images/home_page/computer.png" alt="computer" />
               <div class="builds_card-info">
                 <div class="builds_card-info-name">The Overclock Elite</div>
                 <div class="builds_card-info-price">$199.00</div>
@@ -607,7 +609,7 @@
             </div>
             <!-- / pre-builds_card -->
             <div class="pre-builds_card">
-              <img src="pictures/computer.png" alt="computer" />
+              <img src="assets/images/home_page/computer.png" alt="computer" />
               <div class="builds_card-info">
                 <div class="builds_card-info-name">The Overclock Elite</div>
                 <div class="builds_card-info-price">$199.00</div>
@@ -616,7 +618,7 @@
             </div>
             <!-- / pre-builds_card -->
             <div class="pre-builds_card">
-              <img src="pictures/computer.png" alt="computer" />
+              <img src="assets/images/home_page/computer.png" alt="computer" />
               <div class="builds_card-info">
                 <div class="builds_card-info-name">The Overclock Elite</div>
                 <div class="builds_card-info-price">$199.00</div>
@@ -673,7 +675,7 @@
 
           <div class="home-guide_body">
             <div class="home-guide_card">
-              <img src="pictures/computer.png" alt="computer" />
+              <img src="assets/images/home_page/computer.png" alt="computer" />
               <div class="guide_card-info">
                 <div class="guide-title">Beginner's Guide to Motherboards</div>
                 <button class="guide_cart-btn">Read Guide</button>
@@ -681,7 +683,7 @@
             </div>
             <!-- / guide_card -->
             <div class="home-guide_card">
-              <img src="pictures/computer.png" alt="computer" />
+              <img src="assets/images/home_page/computer.png" alt="computer" />
               <div class="guide_card-info">
                 <div class="guide-title">Beginner's Guide to Motherboards</div>
                 <button class="guide_cart-btn">Read Guide</button>
@@ -797,7 +799,10 @@
               </div>
               <!-- / build-card_right -->
               <div class="build-card_left">
-                <img src="pictures/computer.png" alt="Build preview" />
+                <img
+                  src="assets/images/home_page/computer.png"
+                  alt="Build preview"
+                />
               </div>
             </div>
           </div>
@@ -867,7 +872,10 @@
               </div>
               <!-- / build-card_right -->
               <div class="build-card_left">
-                <img src="pictures/computer.png" alt="Build preview" />
+                <img
+                  src="assets/images/home_page/computer.png"
+                  alt="Build preview"
+                />
               </div>
             </div>
           </div>
@@ -937,7 +945,10 @@
               </div>
               <!-- / build-card_right -->
               <div class="build-card_left">
-                <img src="pictures/computer.png" alt="Build preview" />
+                <img
+                  src="assets/images/home_page/computer.png"
+                  alt="Build preview"
+                />
               </div>
             </div>
           </div>
@@ -998,7 +1009,10 @@
 
         <div class="accessories_body">
           <div class="accessory-card">
-            <img src="pictures/computer.png" alt="Custom Keyboard" />
+            <img
+              src="assets/images/home_page/computer.png"
+              alt="Custom Keyboard"
+            />
             <div class="accessory-info">
               <h5>Custom Keyboard</h5>
               <p class="accessory-price">$26.00</p>
@@ -1007,7 +1021,7 @@
           </div>
 
           <div class="accessory-card">
-            <img src="pictures/computer.png" alt="Gaming Mice" />
+            <img src="assets/images/home_page/computer.png" alt="Gaming Mice" />
             <div class="accessory-info">
               <h5>Gaming Mice</h5>
               <p class="accessory-price">$75.00</p>
@@ -1016,7 +1030,10 @@
           </div>
 
           <div class="accessory-card">
-            <img src="pictures/computer.png" alt="Custom Monitor" />
+            <img
+              src="assets/images/home_page/computer.png"
+              alt="Custom Monitor"
+            />
             <div class="accessory-info">
               <h5>Custom Monitor</h5>
               <p class="accessory-price">$199.00</p>
@@ -1025,7 +1042,7 @@
           </div>
 
           <div class="accessory-card">
-            <img src="pictures/computer.png" alt="Headset" />
+            <img src="assets/images/home_page/computer.png" alt="Headset" />
             <div class="accessory-info">
               <h5>Headset</h5>
               <p class="accessory-price">$25.00</p>
@@ -1127,6 +1144,7 @@
     </footer>
     <!--/ Footer -->
 
-    <script src="scripts/main.js"></script>
-  </body>
+    <script src="assets/js/home_page.js"></script>
+    </body>
+
 </html>
