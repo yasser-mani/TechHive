@@ -1,27 +1,4 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-  text-decoration: none;
-  list-style: none;
-}
 
-/* font */
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-
-/* root & global variables*/
-:root {
-  --mainBackColor: #0f172a;
-  --secBackColor: #1e293b;
-  --mainBtn: #c9237c;
-  --pinkhover: rgb(163 38 126 / 75%);
-  --headshadow: 0px 0px 20px 1px var(--pinkhover);
-  --headerBlocsbag: #253851;
-  --border: #0ecbf4;
-  --txt: #e6edf8;
-  --tran: all 0.3s ease-in-out;
-}
 
 .anchor::before {
   content: "";
