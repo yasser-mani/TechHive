@@ -1,12 +1,44 @@
 <?php
+require_once "../config/config.php";
 session_start();
+
+// if (isset($_SESSION["login"])) {
+//     header("Location: ../index.php");
+//     exit;
+// }
+
+$errors = [];
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $login = $_POST["login"];
-    $password = $_POST["pasword"];
+    $login = trim($_POST["login"] ?? "");
+    $password = trim($_POST["password"] ?? "");
 
-    $_SESSION["login"] = $login;
-    $_SESSION["pasword"] = $password;
+    if (empty($login)) {
+        $errors["login"] = "Enter the login";
+    } elseif (!filter_var($login, FILTER_VALIDATE_EMAIL)) {
+        $errors["login"] = "Enter a correct email";
+    }
+
+    if (empty($password)) {
+        $errors["password"] = "Enter the password";
+    }
+
+    if (empty($errors)) {
+        $stmt = $dbconnection->prepare("SELECT * FROM users WHERE userlog = ?");
+        $stmt->execute([$login]);
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user && $password == $user["passlog"]) {
+            $_SESSION["login"] = $login;
+
+            header("Location: ../index.php");
+            exit;
+        } else {
+            $errors["global"] = "Invalid email or password";
+        }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -22,27 +54,50 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <body>
     <form method="post" class="card">
+
+        <?php if (isset($errors["global"])): ?>
+            <div class="error"><?= $errors["global"] ?></div>
+        <?php endif; ?>
+
         <div class="card_e card_login">
-            <label for="login"> Login :</label>
-            <input type="text" name="login">
-        </div>
-        <div class="card_e card_password">
-            <label for="login"> Password :</label>
-            <input type="password" name="pasword">
-            <a href="#" class="forget-password">Forget password?</a>
+            <label for="login">Login :</label>
+            <input type="text" name="login" id="login" value="<?= htmlspecialchars($login ?? '') ?>">
+            <?php if (isset($errors["login"])): ?>
+                <div class="error"><?= $errors["login"] ?></div>
+            <?php endif; ?>
         </div>
 
-        <a href="../index.php"> <button type="submit" class="btn"> Log in </button> </a>
+        <div class="card_e card_password">
+            <label for="password">Password :</label>
+            <input type="password" name="password" id="password" value="<?= htmlspecialchars($password ?? '') ?>">
+            <?php if (isset($errors["password"])): ?>
+                <div class="error"><?= $errors["password"] ?></div>
+            <?php endif; ?>
+            <a href="#" class="forget-password">Forget password?</a>
+        </div>
+        <button type="submit" class="btn">Log in</button>
+
         <div class="sign_up">
-            <p> Don't have an account ?</p> <span> <a href="signup.php"> <button type="button" class="btn"> Sign Up
-                    </button> </a> </span>
+            <p>Don't have an account?</p>
+            <span><a href="signup.php" class="btn">Sign Up</a></span>
         </div>
     </form>
+
+    <!-- Forget password block  -->
+    <div class="popup" id="recoverPopup">
+        <div class="popup-content">
+            <h3>Password Recovery</h3>
+            <p>Enter your email to recover your password</p>
+
+            <input type="email" placeholder="Enter your email" class="popup-input">
+
+            <div class="popup-actions">
+                <button class="btn">Send</button>
+                <button class="btn close-btn" type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/login.js"></script>
 </body>
 
 </html>
-
-<?php
-// echo "<pre>";
-// print_r($_SESSION);
-// echo "</pre>";
