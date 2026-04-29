@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -90,6 +91,20 @@
               <a class="acc-sel">
                 <strong>SAVED BUILDERS</strong>
                 <p>View and manage you saved PC</p>
+              </a>
+            </li>
+            <!-- log out  -->
+            <li class="acc-bl-content logout">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                stroke="#0ecbf4" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m16 17 5-5-5-5" />
+                <path d="M21 12H9" />
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              </svg>
+
+              <a href="auth/logout.php" class="acc-sel">
+                <strong>LOG OUT</strong>
+                <p>Sign out of your account</p>
               </a>
             </li>
           </ul>

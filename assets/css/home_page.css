@@ -243,7 +243,7 @@ header {
   border: var(--border) solid 1px;
   background-color: var(--headerBlocsbag);
   border-radius: 10px;
-  height: 190px;
+  height: fit-content;
   width: 350px;
   padding: 13px;
   transition: var(--tran);
@@ -306,6 +306,19 @@ header {
 .acc-sel p {
   opacity: 60%;
   font-size: 12px;
+  color: var(--txt);
+}
+
+.acc-bl-content.logout {
+  border: 1px solid rgba(14, 203, 244, 0.3);
+}
+
+.acc-bl-content.logout strong {
+  color: #0ecbf4;
+}
+
+.acc-bl-content.logout:hover {
+  box-shadow: 0px 0px 15px rgba(14, 203, 244, 0.4);
 }
 
 /*-- RESPONSIVE MOBILE MENU --*/
@@ -419,7 +432,6 @@ header {
   /* Account in mobile */
   .header-actions .acc-sec {
     width: 100%;
-    padding: 20px;
     border-bottom: 1px solid rgba(14, 203, 244, 0.15);
   }
 
@@ -505,6 +517,11 @@ header {
 
   .search-sec > [type="search"] {
     font-size: 10px;
+  }
+  
+  #acc-bloc {
+    width: 100%;
+    display: block;
   }
 }
 
