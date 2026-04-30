@@ -4,7 +4,7 @@ session_start();
 
 $errors = [];
 $signup_errors = [];
-$active_panel = "login";
+$active_panel = $_GET["active_panel"];
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $action = $_POST["action"] ?? "";

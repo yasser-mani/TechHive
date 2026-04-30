@@ -1,6 +1,6 @@
 <?php
 session_start()
-?>
+  ?>
 <!doctype html>
 <html lang="en">
 
@@ -117,7 +117,7 @@ session_start()
         <?php else: ?>
           <!-- Auth Buttons (Login/Signup) -->
           <div class="auth-buttons">
-            <a href="auth/login.php" class="auth-btn login-btn">
+            <a href="auth/login.php?active_panel=login" class="auth-btn login-btn">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
@@ -126,7 +126,7 @@ session_start()
               </svg>
               <span>Login</span>
             </a>
-            <a href="auth/login.php" class="auth-btn signup-btn">
+            <a href="auth/login.php?active_panel=signup" class="auth-btn signup-btn">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
