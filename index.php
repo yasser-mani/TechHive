@@ -1,3 +1,6 @@
+<?php
+session_start()
+?>
 <!doctype html>
 <html lang="en">
 
@@ -60,56 +63,82 @@
         </div>
         <!-- / notifications -->
 
-        <!-- acc section -->
-        <div class="acc-sec">
-          <div class="a1">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-              <path id="accPath" fill="rgb(255, 255, 255)"
-                d="M463 448.2C440.9 409.8 399.4 384 352 384L288 384C240.6 384 199.1 409.8 177 448.2C212.2 487.4 263.2 512 320 512C376.8 512 427.8 487.3 463 448.2zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM320 336C359.8 336 392 303.8 392 264C392 224.2 359.8 192 320 192C280.2 192 248 224.2 248 264C248 303.8 280.2 336 320 336z" />
-            </svg>
-            <p>account</p>
-          </div>
-          <!-- acc-bloc -->
-          <ul id="acc-bloc" class="anchor">
-            <li class="acc-bl-content">
+        <?php if (isset($_SESSION["login"])): ?>
+          <!-- acc section -->
+          <div class="acc-sec">
+            <div class="a1">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
                 <path id="accPath" fill="rgb(255, 255, 255)"
                   d="M463 448.2C440.9 409.8 399.4 384 352 384L288 384C240.6 384 199.1 409.8 177 448.2C212.2 487.4 263.2 512 320 512C376.8 512 427.8 487.3 463 448.2zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM320 336C359.8 336 392 303.8 392 264C392 224.2 359.8 192 320 192C280.2 192 248 224.2 248 264C248 303.8 280.2 336 320 336z" />
               </svg>
-              <a class="acc-sel">
-                <strong>MY PROFILE</strong>
-                <p>Manage you data</p>
-              </a>
-            </li>
-            <!-- bloc content -->
-            <li class="acc-bl-content">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
-                <path fill="#c52094"
-                  d="M102.8 57.3C108.2 51.9 116.6 51.1 123 55.3L241.9 134.5C250.8 140.4 256.1 150.4 256.1 161.1L256.1 210.7L346.9 301.5C380.2 286.5 420.8 292.6 448.1 320L574.2 446.1C592.9 464.8 592.9 495.2 574.2 514L514.1 574.1C495.4 592.8 465 592.8 446.2 574.1L320.1 448C292.7 420.6 286.6 380.1 301.6 346.8L210.8 256L161.2 256C150.5 256 140.5 250.7 134.6 241.8L55.4 122.9C51.2 116.6 52 108.1 57.4 102.7L102.8 57.3zM247.8 360.8C241.5 397.7 250.1 436.7 274 468L179.1 563C151 591.1 105.4 591.1 77.3 563C49.2 534.9 49.2 489.3 77.3 461.2L212.7 325.7L247.9 360.8zM416.1 64C436.2 64 455.5 67.7 473.2 74.5C483.2 78.3 485 91 477.5 98.6L420.8 155.3C417.8 158.3 416.1 162.4 416.1 166.6L416.1 208C416.1 216.8 423.3 224 432.1 224L473.5 224C477.7 224 481.8 222.3 484.8 219.3L541.5 162.6C549.1 155.1 561.8 156.9 565.6 166.9C572.4 184.6 576.1 203.9 576.1 224C576.1 267.2 558.9 306.3 531.1 335.1L482 286C448.9 253 403.5 240.3 360.9 247.6L304.1 190.8L304.1 161.1L303.9 156.1C303.1 143.7 299.5 131.8 293.4 121.2C322.8 86.2 366.8 64 416.1 63.9z" />
-              </svg>
+              <p>account</p>
+            </div>
+            <!-- acc-bloc -->
+            <ul id="acc-bloc" class="anchor">
+              <li class="acc-bl-content">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                  <path id="accPath" fill="rgb(255, 255, 255)"
+                    d="M463 448.2C440.9 409.8 399.4 384 352 384L288 384C240.6 384 199.1 409.8 177 448.2C212.2 487.4 263.2 512 320 512C376.8 512 427.8 487.3 463 448.2zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM320 336C359.8 336 392 303.8 392 264C392 224.2 359.8 192 320 192C280.2 192 248 224.2 248 264C248 303.8 280.2 336 320 336z" />
+                </svg>
+                <a class="acc-sel">
+                  <strong>MY PROFILE</strong>
+                  <p>Manage you data</p>
+                </a>
+              </li>
+              <!-- bloc content -->
+              <li class="acc-bl-content">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                  <path fill="#c52094"
+                    d="M102.8 57.3C108.2 51.9 116.6 51.1 123 55.3L241.9 134.5C250.8 140.4 256.1 150.4 256.1 161.1L256.1 210.7L346.9 301.5C380.2 286.5 420.8 292.6 448.1 320L574.2 446.1C592.9 464.8 592.9 495.2 574.2 514L514.1 574.1C495.4 592.8 465 592.8 446.2 574.1L320.1 448C292.7 420.6 286.6 380.1 301.6 346.8L210.8 256L161.2 256C150.5 256 140.5 250.7 134.6 241.8L55.4 122.9C51.2 116.6 52 108.1 57.4 102.7L102.8 57.3zM247.8 360.8C241.5 397.7 250.1 436.7 274 468L179.1 563C151 591.1 105.4 591.1 77.3 563C49.2 534.9 49.2 489.3 77.3 461.2L212.7 325.7L247.9 360.8zM416.1 64C436.2 64 455.5 67.7 473.2 74.5C483.2 78.3 485 91 477.5 98.6L420.8 155.3C417.8 158.3 416.1 162.4 416.1 166.6L416.1 208C416.1 216.8 423.3 224 432.1 224L473.5 224C477.7 224 481.8 222.3 484.8 219.3L541.5 162.6C549.1 155.1 561.8 156.9 565.6 166.9C572.4 184.6 576.1 203.9 576.1 224C576.1 267.2 558.9 306.3 531.1 335.1L482 286C448.9 253 403.5 240.3 360.9 247.6L304.1 190.8L304.1 161.1L303.9 156.1C303.1 143.7 299.5 131.8 293.4 121.2C322.8 86.2 366.8 64 416.1 63.9z" />
+                </svg>
 
-              <a class="acc-sel">
-                <strong>SAVED BUILDERS</strong>
-                <p>View and manage you saved PC</p>
-              </a>
-            </li>
-            <!-- log out  -->
-            <li class="acc-bl-content logout">
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
-                stroke="#0ecbf4" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m16 17 5-5-5-5" />
-                <path d="M21 12H9" />
-                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-              </svg>
+                <a class="acc-sel">
+                  <strong>SAVED BUILDERS</strong>
+                  <p>View and manage you saved PC</p>
+                </a>
+              </li>
+              <!-- log out  -->
+              <li class="acc-bl-content logout">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                  stroke="#0ecbf4" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m16 17 5-5-5-5" />
+                  <path d="M21 12H9" />
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                </svg>
 
-              <a href="auth/logout.php" class="acc-sel">
-                <strong>LOG OUT</strong>
-                <p>Sign out of your account</p>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <!-- / acc section -->
+                <a href="auth/logout.php" class="acc-sel">
+                  <strong>LOG OUT</strong>
+                  <p>Sign out of your account</p>
+                </a>
+              </li>
+              <!--/ log out  -->
+            </ul>
+          </div>
+        <?php else: ?>
+          <!-- Auth Buttons (Login/Signup) -->
+          <div class="auth-buttons">
+            <a href="auth/login.php" class="auth-btn login-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                <polyline points="10 17 15 12 10 7" />
+                <line x1="15" y1="12" x2="3" y2="12" />
+              </svg>
+              <span>Login</span>
+            </a>
+            <a href="auth/login.php" class="auth-btn signup-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <line x1="19" y1="8" x2="19" y2="14" />
+                <line x1="22" y1="11" x2="16" y2="11" />
+              </svg>
+              <span>Sign Up</span>
+            </a>
+          </div>
+          <!-- / Auth Buttons -->
+        <?php endif; ?>
       </div>
       <!-- / header-actions -->
     </div>
@@ -873,3 +902,7 @@
 </body>
 
 </html>
+
+<?php
+
+print_r($_SESSION);

@@ -30,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             if ($user && $password == $user["passlog"]) {
                 $_SESSION["login"] = $login;
-                $_SESSION["username"] = $user["username"];
                 header("Location: ../index.php");
                 exit;
             } else {
